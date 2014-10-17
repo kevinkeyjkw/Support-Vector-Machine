@@ -105,12 +105,6 @@ n = len(rows)
 y = [x[2] for x in rows]
 
 
-class1,class2=splitClasses(rows)
-
-plt.plot(class1[:,0],class1[:,1],'^',markersize=7,color='red',alpha=0.5,label='class1')
-plt.plot(class2[:,0],class2[:,1],'o',markersize=7,color='blue',alpha=0.5,label='class2')
-
-
 xVect=getXvect(rows)
 #Get kernel
 kernelMatrix = kernel(xVect)
@@ -121,10 +115,20 @@ alpha=svmDual(n,kernelMatrix,stepsize,y,c)
 #Weight vector
 wv = calculateWeightVector(alpha,y,xVect)
 #b2=calculateBias([1,1,1,-1,-1],5,np.array([0.833,0.334]), [[3.5,4.25],[4,3],[4.5,1.75],[2,2],[2.5,0.75]])
-# x=np.linspace(4,8,150)
-# y=(wv[0]*x+wv[2])/-wv[1]
-# plt.plot(x,y)
-# plt.show()
+
+class1,class2=splitClasses(rows)
+c1=plt.plot(class1[:,0],class1[:,1],'^',markersize=7,color='red',alpha=0.5,label='class1')
+c2=plt.plot(class2[:,0],class2[:,1],'o',markersize=7,color='blue',alpha=0.5,label='class2')
+
+x=np.linspace(4,8,150)
+y=(wv[0]*x+wv[2])/-wv[1]
+plt.plot(x,y)
+plt.legend()
+plt.title('Support Vector Machine')
+plt.text(6.5,6.4,'C=10\n$\epsilon=0.0001$')
+plt.annotate('hyperplane',xy=(6.5,4.6),xytext=(5.8,5.1),arrowprops=dict(facecolor='black',shrink=0.05))
+plt.savefig('Support Vector MachineC=1000.pdf')
+plt.show()
 
 #Print sv
 
