@@ -11,3 +11,4 @@ Basically it uses stochastic gradient ascent to find the support vectors for the
 that have a corresponding positive alpha value. When c is low like the value 10, the margin(space between hyperplane and
 closest points will be maximized. But when c is high like 1000, margin may be smaller, but slack will be minimized(there
 are no misclassified classes such as the alienated circle in c=10 plot)
+![s1](https://raw.githubusercontent.com/kevinkeyjkw/Support-Vector-Machine/master/HyperplaneC=10.png)
